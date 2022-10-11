@@ -3,6 +3,7 @@ Shader "Unlit/1_SimpleTexture_Unlit"
     Properties
     {
         _MainTexture("Main Texture", 2D) = "white" {}
+        [Toggle] _Grayscale("Grayscale", Float) = 0
         [Toggle] _FlipHorizontal("Flip Horizontal", Float) = 0
         [Toggle] _FlipVertical("Flip Vertical", Float) = 0
     }
@@ -20,8 +21,9 @@ Shader "Unlit/1_SimpleTexture_Unlit"
             #include "UnityCG.cginc"
 
             sampler2D _MainTexture;
-            float _FlipHorizontal;
-            float _FlipVertical;
+            bool _Grayscale;
+            bool _FlipHorizontal;
+            bool _FlipVertical;
 
             fixed4 frag (v2f_img i) : COLOR
             {
@@ -30,7 +32,8 @@ Shader "Unlit/1_SimpleTexture_Unlit"
                     _FlipVertical ? 1 - i.uv.y : i.uv.y
                 );
 
-                fixed3 color = tex2D(_MainTexture, uv).rgb;
+                float4 texColor = tex2D(_MainTexture, uv);
+                fixed3 color = _Grayscale ? texColor.rrr : texColor.rgb;
 
                 return fixed4(color, 1.0);
             }
