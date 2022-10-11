@@ -13,6 +13,7 @@ A collection of Shaders written in **Cg** for the **Built-in RP** in Unity, from
   - [Grayscale](#grayscale)
   - [Rotate Texture](#rotate-texture)
 - [Ripple Effect](#ripple-effect)
+- [Ripple Transition](#ripple-transition)
 
 ---
 
@@ -95,3 +96,57 @@ fixed4 frag (v2f i) : COLOR
 ```
 
 ![Gif](./docs/2.gif)
+
+### Ripple Transition
+
+1. Create a circular fade horizon, using the distance to the center and `smoothstep`.
+1. Use a C# script to set the `Start Time` to the `Material` so that the shader program can use the value.
+1. Calculate the % elapsed of the transition duration, to lerp the transition between textures.
+1. Also use the elapsed % to make ripples grow in size, and slow down.
+
+```c
+// FADE HORIZON
+
+// figure out how much of the transition has elapsed
+float elapsedTime = _Time.y - _StartTime;
+// add an extra second for ripple size to grow larger
+// elapsedTime = clamp(elapsedTime, 0, _TransitionDuration + 1);
+
+float elapsedPercentage = elapsedTime / _TransitionDuration;
+
+// calculate how much of each texture should show up
+float currentDistanceOfFade = 1 * elapsedPercentage;
+float distanceToCenter = length(pixelPos);
+
+float currentFade = smoothstep(
+    currentDistanceOfFade - _FadeSmoothness,
+    currentDistanceOfFade + _FadeSmoothness,
+    distanceToCenter
+);
+```
+
+```c
+// RIPPLE
+
+// make ripple size grow over time
+float rippleSizeOverTime = lerp(0.02, _RippleSize, elapsedPercentage);
+
+// get a displacement in the direction of the ray from the center to the pixel
+float2 displacement = (pixelPos / distanceToCenter) * 0.03 * cos(
+    distanceToCenter * (1 / rippleSizeOverTime) - elapsedTime * _RippleVelocity
+);
+```
+
+```c
+// BLEND
+
+// blend the textures given the current fade
+float4 texColorA = tex2D(_TextureA, ripple);
+float4 texColorB = tex2D(_TextureB, ripple);
+
+float4 blend = lerp(texColorA, texColorB, currentFade);
+
+fixed3 color = blend.rgb;
+```
+
+![Gif](./docs/3.gif)
