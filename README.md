@@ -1,12 +1,12 @@
-# Cg Shaders in Unity
+# Cg Texture Shaders in Unity
 
-A collection of Shaders written in **Cg** for the **Built-in RP** in Unity, from basic to advanced.
+A collection of Texture manipulation Shaders written in **Cg** for the **Built-in RP** in Unity.
 
 ### References
 
 - [Learn Unity Shaders from Scratch by Nik Lever](https://www.udemy.com/course/learn-unity-shaders-from-scratch)
 
-## Features
+## Shaders
 
 - [Simple 2D Texture](#simple-2d-texture)
   - [Flip Texture](#flip-texture)

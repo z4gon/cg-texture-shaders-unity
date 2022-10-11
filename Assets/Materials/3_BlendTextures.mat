@@ -81,7 +81,7 @@ Material:
     - _DebugSquares: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _FadeSmoothness: 0.174
+    - _FadeSmoothness: 0.332
     - _FlipHorizontal: 0
     - _FlipVertical: 0
     - _GlossMapScale: 1
@@ -93,7 +93,7 @@ Material:
     - _OcclusionStrength: 1
     - _Offset: 0.36
     - _Parallax: 0.02
-    - _RippleSize: 0.5
+    - _RippleSize: 0.1
     - _RippleVelocity: 4.8
     - _RotationAngle: 0
     - _SmoothnessTextureChannel: 0
@@ -103,7 +103,7 @@ Material:
     - _TilingColumns: 5
     - _TilingRows: 5
     - _TimeVelocity: 1
-    - _TransitionDuration: 3
+    - _TransitionDuration: 6
     - _UVSec: 0
     - _UseTime: 1
     - _ZWrite: 1
