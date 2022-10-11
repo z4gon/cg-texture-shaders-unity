@@ -40,3 +40,13 @@ float2 uv = float2(
 ```
 
 ![Gif](./docs/1b.gif)
+
+### Grayscale
+
+1. Use just a channel for all colors (not ideal).
+
+```c
+fixed3 color = _Grayscale ? texColor.rrr : texColor.rgb;
+```
+
+![Gif](./docs/1c.gif)
