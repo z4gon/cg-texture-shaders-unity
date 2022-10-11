@@ -9,6 +9,9 @@ A collection of Shaders written in **Cg** for the **Built-in RP** in Unity, from
 ## Features
 
 - [Simple 2D Texture](#simple-2d-texture)
+  - [Flip Texture](#flip-texture)
+  - [Grayscale](#grayscale)
+  - [Rotate Texture](#rotate-texture)
 
 ---
 
@@ -50,3 +53,14 @@ fixed3 color = _Grayscale ? texColor.rrr : texColor.rgb;
 ```
 
 ![Gif](./docs/1c.gif)
+
+### Rotate Texture
+
+1. Use a rotation matrix to rotate the uvs along a specified center.
+
+```c
+float2x2 rotation = getRotationMatrix2D(UNITY_PI * _RotationAngle);
+uv = mul(uv - _RotationCenter.xy, rotation) + _RotationCenter.xy;
+```
+
+![Gif](./docs/1d.gif)
