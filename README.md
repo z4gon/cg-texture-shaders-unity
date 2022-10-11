@@ -1,53 +1,23 @@
-# Unity Template Project for Built-In RP
+# Cg Shaders in Unity
 
-{{YOUR_PROJECT_DESCRIPTION_HERE}} in Unity **Unity 2021.3.10f1**
+A collection of Shaders written in **Cg** for the **Built-in RP** in Unity, from basic to advanced.
 
 ## Features
 
-- [Feature](#feature)
-- [Feature](#feature)
-- [Feature](#feature)
-
-## Screenshots
-
-![Gif](./docs/1.gif)
-![Gif](./docs/1.gif)
+- [Simple 2D Texture](#simple-2d-texture)
 
 ---
 
-## Feature
+## Simple 2D Texture
 
-1. Implementation detail.
-1. Implementation detail.
-1. Implementation detail.
+1. Expose a ShaderLab property to take in a `2D` texture.
+1. Connect the property to the Cg program, using a `sampler2D` variable.
+1. Use the [tex2D](https://developer.download.nvidia.com/cg/tex2D.html) function from cg to map a pixel from the texture, to a pixel of the fragment, using the uv coordinates.
 
-![Gif](./docs/1.gif)
-![Gif](./docs/1.gif)
-
-## Feature
-
-1. Implementation detail.
-1. Implementation detail.
-1. Implementation detail.
-
-![Gif](./docs/1.gif)
 ![Gif](./docs/1.gif)
 
 ---
-
-## Implementation explained
-
-1. **Step**
-
-   1. Sub Step.
-   1. Sub Step.
-
-1. **Step**
-
-   1. Sub Step.
-   1. Sub Step.
 
 ## References
 
-- [Ref](https://adrianb.io/2014/08/09/perlinnoise.html)
-- [Ref](https://adrianb.io/2014/08/09/perlinnoise.html)
+- [Learn Unity Shaders from Scratch by Nik Lever](https://www.udemy.com/course/learn-unity-shaders-from-scratch)
