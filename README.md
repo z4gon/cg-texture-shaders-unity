@@ -67,7 +67,7 @@ uv = mul(uv - _RotationCenter.xy, rotation) + _RotationCenter.xy;
 
 ![Gif](./docs/1d.gif)
 
-### Ripple Effect
+## Ripple Effect
 
 1. Get the current pixel position, this will define the axis along which we will get a displaced uv.
 1. Calculate the distance of the current uv to the center, by using [length()](https://developer.download.nvidia.com/cg/length.html).
@@ -97,7 +97,7 @@ fixed4 frag (v2f i) : COLOR
 
 ![Gif](./docs/2.gif)
 
-### Ripple Transition
+## Ripple Transition
 
 1. Create a circular fade horizon, using the distance to the center and `smoothstep`.
 1. Use a C# script to set the `Start Time` to the `Material` so that the shader program can use the value.
